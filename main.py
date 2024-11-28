@@ -9,7 +9,9 @@ class Hotel:
         pass
 
     def book(self):
-        pass
+        """Book method that changes availability in the hotel data if it is booked"""
+        hotel_df.loc[hotel_df['id'] == self.id]['available'] = 'no'
+        hotel_df.to_csv("hotels.csv", index=False)
 
     def available(self):
         """Checks if the hotel is available"""
