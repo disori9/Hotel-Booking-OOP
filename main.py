@@ -16,12 +16,10 @@ class Hotel:
     def available(self):
         """Checks if the hotel is available"""
         availability = hotel_df.loc[hotel_df['id'] == self.id]['available'].squeeze()
-        print(availability)
+
         if availability == "yes":
-            print("available")
             return True
         else:
-            print("not available")
             return False
 
 class ReservationTicket:
@@ -34,7 +32,6 @@ class ReservationTicket:
         pass
 
 
-print(hotel_df)
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
 
