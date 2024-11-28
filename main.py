@@ -10,12 +10,12 @@ class Hotel:
 
     def book(self):
         """Book method that changes availability in the hotel data if it is booked"""
-        hotel_df.loc[hotel_df['id'] == self.id]['available'] = 'no'
+        hotel_df.loc[hotel_df['id'] == self.id, 'available'] = "no"
         hotel_df.to_csv("hotels.csv", index=False)
 
     def available(self):
         """Checks if the hotel is available"""
-        availability = hotel_df.loc[hotel_df['id'] == self.id]['available'].squeeze()
+        availability = hotel_df.loc[hotel_df['id'] == self.id, 'available'].squeeze()
 
         if availability == "yes":
             return True
