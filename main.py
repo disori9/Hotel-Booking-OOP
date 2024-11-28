@@ -24,7 +24,7 @@ class Hotel:
 
 class ReservationTicket:
     def __init__(self, cust_name, hotel_id):
-        self.name = name
+        self.name = cust_name
         self.hotel_id = hotel_id
         pass
 
