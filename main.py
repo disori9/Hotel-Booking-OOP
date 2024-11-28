@@ -2,8 +2,9 @@ import pandas as pd
 
 hotel_df = pd.read_csv("hotels.csv")
 
+
 class Hotel:
-    def __init__(self, id):
+    def __init__(self, hotel_id):
         self.id = id
         pass
 
@@ -14,7 +15,7 @@ class Hotel:
         pass
 
 class ReservationTicket:
-    def __init__(self, name, hotel):
+    def __init__(self, cust_name, hotel_id):
         self.name = name
         self.hotel = hotel
         pass
