@@ -31,3 +31,5 @@ if hotel.available():
     hotel.book()
     name = input("Enter your name: ")
     reservation_ticket = ReservationTicket(name, hotel)
+else:
+    print("Hotel is not available")
