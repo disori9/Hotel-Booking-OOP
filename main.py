@@ -8,6 +8,10 @@ class Hotel:
         self.id = hotel_id
         pass
 
+    def get_name(self):
+        hotel_name = hotel_df.loc[hotel_df['id'] == self.id, 'name'].squeeze()
+        return hotel_name
+
     def book(self):
         """Book method that changes availability in the hotel data if it is booked"""
         hotel_df.loc[hotel_df['id'] == self.id, 'available'] = "no"
