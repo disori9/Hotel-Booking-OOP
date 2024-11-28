@@ -5,7 +5,7 @@ hotel_df = pd.read_csv("hotels.csv")
 
 class Hotel:
     def __init__(self, hotel_id):
-        self.id = id
+        self.id = hotel_id
         pass
 
     def book(self):
@@ -17,7 +17,7 @@ class Hotel:
 class ReservationTicket:
     def __init__(self, cust_name, hotel_id):
         self.name = name
-        self.hotel = hotel
+        self.hotel_id = hotel_id
         pass
 
     def generate(self):
