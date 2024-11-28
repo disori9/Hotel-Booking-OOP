@@ -25,8 +25,8 @@ class ReservationTicket:
 
 
 print(hotel_df)
-id = input("Enter the id of the hotel: ")
-hotel = Hotel(id)
+hotel_id = input("Enter the id of the hotel: ")
+hotel = Hotel(hotel_id)
 
 if hotel.available():
     hotel.book()
