@@ -25,10 +25,16 @@ class Hotel:
 class ReservationTicket:
     def __init__(self, cust_name, hotel_object):
         self.name = cust_name
-        self.hotel_object = hotel_object
+        self.hotel = hotel_object
 
     def generate(self):
-        pass
+        content = f"""
+        Thank you for your reservation
+        Here are your booking data:
+        Name: {self.name}
+        Hotel: {self.hotel.get_name()}"""
+
+        return content
 
 
 hotel_id = int(input("Enter the id of the hotel: "))
