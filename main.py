@@ -23,10 +23,9 @@ class Hotel:
             return False
 
 class ReservationTicket:
-    def __init__(self, cust_name, hotel_id):
+    def __init__(self, cust_name, hotel_object):
         self.name = cust_name
-        self.hotel_id = hotel_id
-        pass
+        self.hotel_object = hotel_object
 
     def generate(self):
         pass
