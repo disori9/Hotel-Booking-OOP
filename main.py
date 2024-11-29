@@ -78,11 +78,13 @@ hotel = Hotel(hotel_id)
 if hotel.available() is True:
     credit_card = SecureCreditCard("1234")
     if credit_card.validate("12/26", "123", "JOHN SMITH"):
-        print("Successfully validated")
-        hotel.book()
-        name = input("Enter your name: ")
-        reservation_ticket = ReservationTicket(name, hotel)
-        print(reservation_ticket.generate())
+        if credit_card.authenticate("mypass"):
+            hotel.book()
+            name = input("Enter your name: ")
+            reservation_ticket = ReservationTicket(name, hotel)
+            print(reservation_ticket.generate())
+        else:
+            print("Credit card authentication failed.")
     else:
         print("There is a problem with your payment")
 else:
