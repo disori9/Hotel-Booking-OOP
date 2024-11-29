@@ -48,5 +48,6 @@ if hotel.available() is True:
     hotel.book()
     name = input("Enter your name: ")
     reservation_ticket = ReservationTicket(name, hotel)
+    print(reservation_ticket.generate())
 else:
     print("Hotel is not available")
