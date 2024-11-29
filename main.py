@@ -26,6 +26,9 @@ class Hotel:
         else:
             return False
 
+class SpaHotel(Hotel):
+    pass
+
 class ReservationTicket:
     def __init__(self, cust_name, hotel_object):
         self.name = cust_name
