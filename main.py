@@ -105,7 +105,8 @@ if hotel.available() is True:
             spa_invitation = input("Do you want to book a spa package?").lower()
 
             if spa_invitation == "yes":
-                spa_reservation_ticket = SpaReservationTicket(name, hotel)
+                spa_hotel = SpaHotel(hotel)
+                spa_reservation_ticket = SpaReservationTicket(name, spa_hotel)
                 print(spa_reservation_ticket.generate())
         else:
             print("Credit card authentication failed.")
