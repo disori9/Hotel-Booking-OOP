@@ -44,13 +44,24 @@ class CreditCard:
     def __init__(self, number):
         self.number = number
 
+    def validate(self, expiration, cvc, holder):
+        cc_df = pd.read_csv("cards.csv", dtype=str)
+        i_expiration = cc_df.loc[cc_df['number'] == self.number, 'expiration'].squeeze()
+        i_cvc = cc_df.loc[cc_df['number'] == self.number, 'cvc'].squeeze()
+        i_holder = cc_df.loc[cc_df['number'] == self.number, 'holder'].squeeze()
+
+        if i_expiration == expiration and i_cvc == cvc and i_holder == holder:
+            return True
+        else:
+            return False
 
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
 
 if hotel.available() is True:
-    credit_card = CreditCard(cc_number)
-    if credit_card.validate(cc_exp, cc_cv, cc_holder):
+    credit_card = CreditCard("1234")
+    if credit_card.validate("12/26", "123", "JOHN SMITH"):
+        print("Successfully validated")
         hotel.book()
         name = input("Enter your name: ")
         reservation_ticket = ReservationTicket(name, hotel)
