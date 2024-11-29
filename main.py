@@ -72,6 +72,7 @@ class SecureCreditCard(CreditCard):
         else:
             return False
 
+print(hotel_df)
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
 
