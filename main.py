@@ -40,14 +40,22 @@ class ReservationTicket:
 
         return content
 
+class CreditCard:
+    def __init__(self, number):
+        self.number = number
+
 
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
 
 if hotel.available() is True:
-    hotel.book()
-    name = input("Enter your name: ")
-    reservation_ticket = ReservationTicket(name, hotel)
-    print(reservation_ticket.generate())
+    credit_card = CreditCard(cc_number)
+    if credit_card.validate(cc_exp, cc_cv, cc_holder):
+        hotel.book()
+        name = input("Enter your name: ")
+        reservation_ticket = ReservationTicket(name, hotel)
+        print(reservation_ticket.generate())
+    else:
+        print("There is a problem with your payment")
 else:
     print("Hotel is not available")
