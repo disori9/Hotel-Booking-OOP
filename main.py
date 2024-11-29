@@ -1,6 +1,6 @@
 import pandas as pd
 
-hotel_df = pd.read_csv("hotels.csv")
+hotel_df = pd.read_csv("hotels.csv", dtype={'id': str})
 
 
 class Hotel:
@@ -43,13 +43,18 @@ class ReservationTicket:
 
         return content
 
-class SpaReservationTicket(ReservationTicket):
+class SpaReservationTicket:
+    def __init__(self, cust_name, spa_hotel_object):
+        self.name = cust_name
+        self.spa_hotel = spa_hotel_object
+
+
     def generate(self):
         content = f"""
         Thank you for your SPA reservation
         Here are your SPA booking data:
         Name: {self.name}
-        Hotel: {self.hotel.get_name()}"""
+        Hotel: {self.spa_hotel.get_name()}"""
 
         return content
 
@@ -86,7 +91,7 @@ class SecureCreditCard(CreditCard):
             return False
 
 print(hotel_df)
-hotel_id = int(input("Enter the id of the hotel: "))
+hotel_id = input("Enter the id of the hotel: ")
 hotel = Hotel(hotel_id)
 
 if hotel.available() is True:
@@ -96,11 +101,11 @@ if hotel.available() is True:
             hotel.book()
             name = input("Enter your name: ")
             reservation_ticket = ReservationTicket(name, hotel)
-            print(reservation_ticket.generate())
-            spa_invitation = input("Do you want to book a spa package?")
+            print(reservation_ticket.generate() + "\n")
+            spa_invitation = input("Do you want to book a spa package?").lower()
 
             if spa_invitation == "yes":
-                spa_reservation_ticket = SpaReservationTicket(reservation_ticket)
+                spa_reservation_ticket = SpaReservationTicket(name, hotel)
                 print(spa_reservation_ticket.generate())
         else:
             print("Credit card authentication failed.")
