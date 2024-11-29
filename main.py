@@ -45,15 +45,22 @@ class CreditCard:
         self.number = number
 
     def validate(self, expiration, cvc, holder):
-        cc_df = pd.read_csv("cards.csv", dtype=str)
-        i_expiration = cc_df.loc[cc_df['number'] == self.number, 'expiration'].squeeze()
-        i_cvc = cc_df.loc[cc_df['number'] == self.number, 'cvc'].squeeze()
-        i_holder = cc_df.loc[cc_df['number'] == self.number, 'holder'].squeeze()
+        cc_df = pd.read_csv("cards.csv", dtype=str).to_dict(orient="records")
+        cc_data = {"number": self.number, "expiration": expiration, "cvc": cvc, "holder": holder}
 
-        if i_expiration == expiration and i_cvc == cvc and i_holder == holder:
+        if cc_data in cc_df:
             return True
         else:
             return False
+
+        # An alternative solution I earlier made
+        # i_expiration = cc_df.loc[cc_df['number'] == self.number, 'expiration'].squeeze()
+        # i_cvc = cc_df.loc[cc_df['number'] == self.number, 'cvc'].squeeze()
+        # i_holder = cc_df.loc[cc_df['number'] == self.number, 'holder'].squeeze()
+        # if i_expiration == expiration and i_cvc == cvc and i_holder == holder:
+        #     return True
+        # else:
+        #     return False
 
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
