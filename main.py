@@ -62,11 +62,21 @@ class CreditCard:
         # else:
         #     return False
 
+class SecureCreditCard(CreditCard):
+    def authenticate(self, input_password):
+        cc_security_df = pd.read_csv("card-security.csv", dtype=str)
+        password = cc_security_df.loc[cc_security_df['number'] == self.number, 'password'].squeeze()
+
+        if input_password == password:
+            return True
+        else:
+            return False
+
 hotel_id = int(input("Enter the id of the hotel: "))
 hotel = Hotel(hotel_id)
 
 if hotel.available() is True:
-    credit_card = CreditCard("1234")
+    credit_card = SecureCreditCard("1234")
     if credit_card.validate("12/26", "123", "JOHN SMITH"):
         print("Successfully validated")
         hotel.book()
