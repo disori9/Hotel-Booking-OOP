@@ -30,8 +30,8 @@ class Hotel:
     def get_hotel_count(cls, data_frame):
         return len(data_frame)
 
-    def __eq__(self):
-        if self.id == self.id:
+    def __eq__(self, other):
+        if self.id == other.id:
             return True
         else:
             return False
