@@ -30,6 +30,11 @@ class Hotel:
     def get_hotel_count(cls, data_frame):
         return len(data_frame)
 
+    def __eq__(self):
+        if self.id == self.id:
+            return True
+        else:
+            return False
 
 class ReservationTicket:
     def __init__(self, cust_name, hotel_object):
@@ -51,4 +56,6 @@ class ReservationTicket:
         name = name.title()
         return name
 
-print(Hotel.get_hotel_count(hotel_df))
+    @staticmethod
+    def convert(amount):
+        return amount * 1.2
