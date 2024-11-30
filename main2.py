@@ -45,5 +45,10 @@ class ReservationTicket:
 
         return content
 
+    @property
+    def the_customer_name(self):
+        name = self.name.strip()
+        name = name.title()
+        return name
 
 print(Hotel.get_hotel_count(hotel_df))
