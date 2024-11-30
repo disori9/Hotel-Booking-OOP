@@ -26,6 +26,11 @@ class Hotel:
         else:
             return False
 
+    @classmethod
+    def get_hotel_count(cls, data_frame):
+        return len(data_frame)
+
+
 class ReservationTicket:
     def __init__(self, cust_name, hotel_object):
         self.name = cust_name
@@ -41,3 +46,4 @@ class ReservationTicket:
         return content
 
 
+print(Hotel.get_hotel_count(hotel_df))
